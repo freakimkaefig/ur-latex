@@ -9,19 +9,18 @@
 \writemeta
 
 \begin{document}
+	
+\pagestyle{empty}
 
 \maketitle
-\thispagestyle{empty} % no page numbering on first page
 \newpage
 
 %Inhaltsverzeichnis----------------------------------------------------------------------------
-\thispagestyle{empty} % no page numbering on table of contents page
 \tableofcontents
 \clearpage
 %Ende Inhaltsverzeichnis-----------------------------------------------------------------------
 
 %Abbildungsverzeichnis-------------------------------------------------------------------------
-\thispagestyle{empty} % no page numbering on list of figures page
 \listoffigures
 \clearpage
 %Ende Abbildungsverzeichnis--------------------------------------------------------------------
@@ -29,7 +28,7 @@
 \pagestyle{fancy}
 \fancyhead[R]{\sffamily\thepage}
 \fancyhead[L]{\sffamily\nouppercase{\leftmark}}
-\fancyfoot[C]{\empty}
+\fancyfoot[C]{\thepage}
 \setstretch{1.5}
 
 %Kapitelabschnitte-----------------------------------------------------------------------------
@@ -37,18 +36,27 @@
 \input{chapter/two}
 
 \clearpage
-%Ende Kapitelabschnitte------------------------------------------------------------------------
 
+\fancyhead{\empty}
+\renewcommand{\headrulewidth}{0pt}
 %Literaturverzeichnis--------------------------------------------------------------------------
 \printbibliography
 \clearpage
 %Ende Literaturverzeichnis---------------------------------------------------------------------
 
+%Anhang----------------------------------------------------------------------------------------
+\input{chapter/attachment}
+\clearpage
+%Ende Anhang----------------------------------------------------------------------------------
+
 %Plagiatserklärung-----------------------------------------------------------------------------
-\newpage
-\thispagestyle{empty} % no page numbering on table of contents page
 \input{chapter/erklaerung}
 \clearpage
 %Ende Plagiatserklärung------------------------------------------------------------------------
+
+%Inhaltsverzeichnis Datenträger----------------------------------------------------------------
+\input{chapter/toc_volume}
+\clearpage
+%Ende Inhaltsverzeichnis Datenträger-----------------------------------------------------------
 
 \end{document}
