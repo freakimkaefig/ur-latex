@@ -1,0 +1,54 @@
+\include{template/template}
+
+\title{Titel der Arbeit}
+\author{Max Mustermann}
+\semester{SS 2016}
+\studid{1234567}
+\address{Musterstraße 1}{12345 Musterhausen}
+\dateHandedIn{31.07.2016}
+\writemeta
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty} % no page numbering on first page
+\newpage
+
+%Inhaltsverzeichnis----------------------------------------------------------------------------
+\thispagestyle{empty} % no page numbering on table of contents page
+\tableofcontents
+\clearpage
+%Ende Inhaltsverzeichnis-----------------------------------------------------------------------
+
+%Abbildungsverzeichnis-------------------------------------------------------------------------
+\thispagestyle{empty} % no page numbering on list of figures page
+\listoffigures
+\clearpage
+%Ende Abbildungsverzeichnis--------------------------------------------------------------------
+
+\pagestyle{fancy}
+\fancyhead[R]{\sffamily\thepage}
+\fancyhead[L]{\sffamily\nouppercase{\leftmark}}
+\fancyfoot[C]{\empty}
+\setstretch{1.5}
+
+%Kapitelabschnitte-----------------------------------------------------------------------------
+\input{chapter/one}
+\input{chapter/two}
+
+\clearpage
+%Ende Kapitelabschnitte------------------------------------------------------------------------
+
+%Literaturverzeichnis--------------------------------------------------------------------------
+\printbibliography
+\clearpage
+%Ende Literaturverzeichnis---------------------------------------------------------------------
+
+%Plagiatserklärung-----------------------------------------------------------------------------
+\newpage
+\thispagestyle{empty} % no page numbering on table of contents page
+\input{chapter/erklaerung}
+\clearpage
+%Ende Plagiatserklärung------------------------------------------------------------------------
+
+\end{document}

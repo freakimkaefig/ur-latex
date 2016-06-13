@@ -1,0 +1,20 @@
+\section{Über dieses Dokument}
+Dieses Dokument soll Ihnen den Einstieg beim Verfassen einer Studienarbeit erleichtern. Die Vorgaben sind als Empfehlungen zu verstehen, können aber bei Bedarf in Absprache mit den Dozenten angepasst und erweitert werden. Hier steht ein Beispielabschnitt. Die Schriftart ist Frutiger Next Pro, die 
+Schriftgröße 11pt. Ein Verweis auf eine Abbildung (vgl. \cref{fig:norman2002}) wird in diesem Satz verdeutlicht. Alternativ eignen sich auch Serifenschriftarten wie Garamond, Times New Roman oder Frutiger Serif Pro. Querverweise (vgl. \cref{sec:ein-unterabschnitt}) werden in diesem Satz  gezeigt. Der erste Absatz jedes Abschnitts und Absätze nach Abbildungen werden nicht eingerückt (Formatvorlage ist Standard). Ein weiterer Absatz wird durch Drücken der Return-Taste erzeugt und automatisch eingerückt. Absätze werden also nicht durch Leerzeilen, sondern durch Einrücken des Folgeabsatzes getrennt. Die Folgeabsätze erhalten automatisch die Formatvorlage Folgeabsatz.
+
+In dieser Vorlage können auch Codeschnipsel eingesetzt und referenziert werden (vgl. Algorithmus:).
+
+In der Kopfzeile erscheint immer der Text der aktuellen Überschrift, die mit der Formatvorlage \enquote{Überschrift 1} formatiert wird. Somit wird dem Leser die Orientierung in der Arbeit erleichtert.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics{images/demo}
+	\caption{Blümchen \autocite{Norman:2002}}
+	\label{fig:norman2002}
+\end{figure}
+
+\subsection{Ein Unterabschnitt}\label{sec:ein-unterabschnitt}
+Ein Beispiel für einen Codeschnipsel in JSON:
+\lstset{
+	language=JSON,
+}
+\lstinputlisting{code/format.json}

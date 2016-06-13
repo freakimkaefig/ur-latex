@@ -1,0 +1,210 @@
+\documentclass[11pt,a4paper,oneside,ngerman]{scrartcl} %Deutschsprachiges Dokument mit der passenden Absatzkennzeichnung in der KOMA-Klasse article
+
+\usepackage[T1]{fontenc} %Fontencoding T1 = skalierbare Vektorschrift
+\usepackage[ngerman]{babel}
+%\usepackage{xunicode}
+\usepackage{polyglossia}
+\setmainlanguage{german}
+\usepackage{xltxtra}
+\usepackage{graphicx} %Standard-Paket zum einbinden von Grafiken
+\usepackage[bookmarks=true, bookmarksnumbered=false, bookmarksopen=false, colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black]{hyperref}
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{mathcomp}
+\usepackage{lmodern,dsfont}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{soul}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{nameref}
+\usepackage{microtype} %Verbesserte Trennregeln mithilfe von Mikrotypografie
+\usepackage{csquotes} %Paket für kontextsensitive Zitate
+\usepackage[output-decimal-marker={,},exponent-product=\cdot]{siunitx} %Paket für Einheiten mitsamt der deutschen Anpassungen
+\usepackage[backend=biber, style=apa, language=ngerman, hyperref=true, url=true, backref=true, doi=false, isbn=false, eprint=false, sorting=anyt, maxalphanames=1, labelalpha, natbib=true]{biblatex} %Lade biblatex für die Erstellung der Bibliografie mit biber ohne Sortierung (Einträge werden nach Aufruf sortiert)
+\usepackage{tabularx} %Paket für Tabellen mit variabler Breite um diese gleich der Seitenbreite zu setzen
+\usepackage[section]{placeins} %Verhindert, dass Abbildungen außerhalbder aktuellen section gesetzt werden
+\usepackage[noabbrev]{cleveref} %
+\usepackage{epstopdf}
+\usepackage{nicefrac}
+\usepackage[draft, author={Lukas Lamm}]{pdfcomment}
+
+\def\fps@figure{htbp} %Standardpositionierung für Bilder und Tabellen auf htbp anstatt tbp
+\def\fps@table{htbp} %Standardpositionierung für Tabellen auf htbp anstatt tbp
+\setkeys{Gin}{width=\linewidth,height=\textheight,keepaspectratio} %Bildskalierung auf Seitenbreite
+%Bilder zentriert einfügen
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+%Trennung durch Komma bei mehrfachem \footcite
+\usepackage{fnpct}
+\AdaptNoteOpt\footcite\multfootcite
+
+\addbibresource{library/literature.bib} %Einbinden der Bibliotheksdatenbank
+\DeclareLanguageMapping{ngerman}{ngerman-apa}
+%Übersetzungen für Bibliographie
+\DefineBibliographyStrings{ngerman}{%
+	andothers ={et\addabbrvspace al\adddot}, %et al.
+	andmore   ={et\addabbrvspace al\adddot}, %et al.
+	nodate    ={n\adddot d\adddot}, %n.d.
+}
+\addto\extrasngerman{%
+	\def\subsectionautorefname{Abschnitt}% Setze den Autorefname von subsection von Unterabschnitt auf Abschnitt
+}
+
+% Hurenkinder und Schusterjungen
+\clubpenalty10000
+\widowpenalty10000
+\displaywidowpenalty=10000
+
+% page borders
+\usepackage[a4paper,left=3.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+\newcommand{\getAuthor}{unbekannter Author}
+\newcommand{\getTitle}{kein Titel}
+\newcommand{\getSemester}{SS 12}
+\newcommand{\getErstgutachter}{Kein Dozent}
+\newcommand{\getZweitgutachter}{Kein Dozent}
+\newcommand{\getDate}{\today}
+\newcommand{\getStudID}{}
+\newcommand{\getAddress}{}
+\newcommand{\getDateHandedIn}{}
+\renewcommand{\author}[1]{\renewcommand{\getAuthor}{#1\\}}
+\renewcommand{\title}[1]{\renewcommand{\getTitle}{#1}}
+\newcommand{\semester}[1]{\renewcommand{\getSemester}{#1}}
+\newcommand{\erstgutachter}[1]{\renewcommand{\getErstgutachter}{#1\\}}
+\newcommand{\zweitgutachter}[1]{\renewcommand{\getZweitgutachter}{#1\\}}
+\newcommand{\studid}[1]{\renewcommand{\getStudID}{#1\\}}
+\newcommand{\address}[2]{\renewcommand{\getAddress}{#1, #2\\}}
+\newcommand{\dateHandedIn}[1]{\renewcommand{\getDateHandedIn}{#1}}
+\newcommand{\writemeta}{
+	\hypersetup{pdfinfo={
+		Title={\getTitle},
+		Author={\getAuthor}
+	}}
+}
+
+\renewcommand*{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\abstract}{\noindent\begin{large}\textbf{Abstract}\end{large}\\\vspace*{10pt}\\}
+
+\newcommand{\N}{\mathds{N}}
+
+\newcommand{\img}[2]{
+	\includegraphics[width=#2]{images/#1}
+}
+
+\renewcommand{\maketitle}{
+\setstretch{1.0}
+	
+\vspace*{-30pt}
+\hfill\includegraphics[width=0.64\textwidth]{images/logo_uni}
+\vspace*{20pt}
+	
+\vspace*{120pt}
+	
+\begin{center}
+	\begin{huge}
+		\sffamily\getTitle \\
+	\end{huge}
+	\vspace*{13pt}
+	Masterarbeit im Fach Medieninformatik am \\
+	Institut für Medien, Sprache und Kultur (I:IMSK)
+\end{center}
+	
+\vfill
+
+\par
+\begingroup
+\leftskip=4.9cm
+\noindent
+Vorgelegt von: \noindent\getAuthor
+Adresse: \getAddress
+Matrikelnummer: \getStudID
+Erstgutachter: Prof. Dr. Erstgutachter\\
+Zweitgutachter: Prof. Dr. Zweitgutachter\\
+Laufendes Semester: \getSemester\\
+Abgegeben am \getDateHandedIn
+\par
+\endgroup
+
+}
+
+% Code
+\definecolor{maroon}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+
+
+\lstdefinelanguage{XML}
+{
+	basicstyle=\ttfamily\footnotesize,
+	tabsize=2,
+	frame=single,
+	xleftmargin=15pt,
+	framexleftmargin=10pt,
+	numbers=left,
+	numberstyle=\tiny,
+	numbersep=5pt,
+	breaklines=true,
+	morestring=[s]{"}{"},
+	morecomment=[s]{?}{?},
+	morecomment=[s]{!--}{--},
+	commentstyle=\color{darkgreen},
+	moredelim=[s][\color{black}]{>}{<},
+	moredelim=[s][\color{red}]{\ }{=},
+	stringstyle=\color{blue},
+	identifierstyle=\color{maroon}
+}
+\lstdefinelanguage{JSON}
+{
+	basicstyle=\ttfamily\footnotesize,
+	numbers=left,
+	numberstyle=\tiny,
+	stepnumber=1,
+	numbersep=5pt,
+	showstringspaces=false,
+	breaklines=true,
+	frame=single,
+	backgroundcolor=\color{white},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{gray},
+	tabsize=2,
+	literate=
+	 {:}{{{\color{maroon}{:}}}}{1}
+	 {,}{{{\color{maroon}{,}}}}{1}
+	 {\{}{{{\color{blue}{\{}}}}{1}
+	 {\}}{{{\color{blue}{\}}}}}{1}
+	 {[}{{{\color{blue}{[}}}}{1}
+	 {]}{{{\color{blue}{]}}}}{1}	
+}
+
+% Schriftarten
+\renewcommand{\familydefault}{\rmdefault}
+\setromanfont{Palatino Linotype}
+\setmonofont[Scale=1.0,BoldFont={* Medium}]{Source Code Pro}
+\setsansfont[BoldFont={* Medium}]{Frutiger Next Pro}
+%\setmainfont[BoldFont={* Medium}]{Frutiger Next Pro}
+
+\titleformat*{\section}{\Large\bfseries\sffamily}
+\titleformat*{\subsection}{\large\bfseries\sffamily}
+\titleformat*{\subsubsection}{\itshape\bfseries\sffamily}
+
+% Keep image inside subsection
+\makeatletter
+\AtBeginDocument{%
+	\expandafter\renewcommand\expandafter\subsection\expandafter{%
+		\expandafter\@fb@secFB\subsection
+	}%
+}
+\makeatother
+
+% Keep image inside subsubsection
+\makeatletter
+\AtBeginDocument{%
+	\expandafter\renewcommand\expandafter\subsubsection\expandafter{%
+		\expandafter\@fb@secFB\subsubsection
+	}%
+}
+\makeatother

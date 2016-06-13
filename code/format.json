@@ -1,0 +1,32 @@
+{
+   "id":"123456",
+   "attributes":{
+      "atrribute1":4,
+      "atrribute2":{
+         "a":"G",
+         "b":2
+      }
+   },
+   "content":[
+      {
+         "attributes":{
+            "one":{
+               "a":false,
+               "b":false
+            }
+         },
+         "array":[
+            {
+               "type":"text",
+               "length": 4
+            },
+            {
+               "type":"simple",
+               "length":12,
+               "object":false
+            }
+         ]
+      },
+      /* ... */
+   ]
+}
